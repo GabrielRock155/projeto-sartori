@@ -1,0 +1,18 @@
+﻿services:
+  sartoria-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: sartoria-gabriel-app
+    restart: unless-stopped
+    ports:
+      - "3001:3001"
+    environment:
+      - NODE_ENV=production
+      - PORT=3001
+    volumes:
+      - sqlite_data:/app/server
+
+volumes:
+  sqlite_data:
+    driver: local
