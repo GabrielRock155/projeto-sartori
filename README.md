@@ -150,4 +150,4 @@ As configurações são sincronizadas em tempo real com feedback via notificaç�
 
 - **Desenvolvedor:** Gabriel Ibiapino
 - **Projeto:** Sartoria Gabriel
-- **Finalidade:** Avaliação Curricular de Engenharia de Software / Desenvolvimento Full-Stack
+- **Finalidade:** Avaliação Curricular de Análise e Desenvolvimento de Sistemas / Desenvolvimento Full-Stack
