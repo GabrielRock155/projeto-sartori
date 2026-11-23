@@ -143,8 +143,6 @@ app.delete('/api/suits/:id', async (req, res) => {
   }
 });
 
-<<<<<<< HEAD
-=======
 // POST register sale (4ª Funcionalidade: Registrar Venda e Baixa de Estoque)
 app.post('/api/suits/:id/sell', async (req, res) => {
   try {
@@ -239,7 +237,6 @@ app.get('/api/sales', async (_req, res) => {
   }
 });
 
->>>>>>> ae31682 (Feat: diagrama de classe e caso de uso, funcionalidade de vendas)
 // Serve static frontend files in production
 if (fs.existsSync(distPath)) {
   app.use(express.static(distPath));

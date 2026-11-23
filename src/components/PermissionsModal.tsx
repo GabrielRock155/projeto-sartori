@@ -6,10 +6,7 @@ import {
   PlusCircle, 
   Pencil, 
   Trash2,
-<<<<<<< HEAD
-=======
   BadgeDollarSign,
->>>>>>> ae31682 (Feat: diagrama de classe e caso de uso, funcionalidade de vendas)
   Check
 } from 'lucide-react';
 
@@ -29,20 +26,14 @@ export const PermissionsModal: React.FC<PermissionsModalProps> = ({
   const [canInsert, setCanInsert] = useState(permissions.canInsert);
   const [canEdit, setCanEdit] = useState(permissions.canEdit);
   const [canDelete, setCanDelete] = useState(permissions.canDelete);
-<<<<<<< HEAD
-=======
   const [canSell, setCanSell] = useState(permissions.canSell ?? true);
->>>>>>> ae31682 (Feat: diagrama de classe e caso de uso, funcionalidade de vendas)
 
   useEffect(() => {
     if (isOpen) {
       setCanInsert(permissions.canInsert);
       setCanEdit(permissions.canEdit);
       setCanDelete(permissions.canDelete);
-<<<<<<< HEAD
-=======
       setCanSell(permissions.canSell ?? true);
->>>>>>> ae31682 (Feat: diagrama de classe e caso de uso, funcionalidade de vendas)
     }
   }, [isOpen, permissions]);
 
@@ -53,10 +44,7 @@ export const PermissionsModal: React.FC<PermissionsModalProps> = ({
       canInsert,
       canEdit,
       canDelete,
-<<<<<<< HEAD
-=======
       canSell,
->>>>>>> ae31682 (Feat: diagrama de classe e caso de uso, funcionalidade de vendas)
     });
     onClose();
   };
@@ -79,8 +67,6 @@ export const PermissionsModal: React.FC<PermissionsModalProps> = ({
       toggle: () => setCanEdit((prev) => !prev),
     },
     {
-<<<<<<< HEAD
-=======
       id: 'sell',
       title: 'Registrar Vendas (Baixa de Estoque)',
       description: 'Permite realizar vendas de ternos, abater unidades do estoque e contabilizar saidas.',
@@ -89,7 +75,6 @@ export const PermissionsModal: React.FC<PermissionsModalProps> = ({
       toggle: () => setCanSell((prev) => !prev),
     },
     {
->>>>>>> ae31682 (Feat: diagrama de classe e caso de uso, funcionalidade de vendas)
       id: 'delete',
       title: 'Excluir Ternos',
       description: 'Permite remover modelos de ternos do catalogo e do banco de dados.',
@@ -202,11 +187,7 @@ export const PermissionsModal: React.FC<PermissionsModalProps> = ({
         {/* Footer */}
         <div className="p-4 border-t border-slate-100 bg-slate-50 flex items-center justify-between">
           <div className="text-[11px] text-slate-500 font-mono">
-<<<<<<< HEAD
-            Status: {canInsert && canEdit && canDelete ? 'Todas ativas' : 'Parcialmente restrito'}
-=======
             Status: {canInsert && canEdit && canDelete && canSell ? 'Todas ativas' : 'Parcialmente restrito'}
->>>>>>> ae31682 (Feat: diagrama de classe e caso de uso, funcionalidade de vendas)
           </div>
 
           <div className="flex items-center gap-2">

@@ -5,17 +5,10 @@
   "type": "module",
   "scripts": {
     "start": "tsx server/index.ts",
-<<<<<<< HEAD
-    "dev": "concurrently -k -n \"mysql-api,vite-app\" -c \"blue,green\" \"tsx server/index.ts\" \"vite\"",
-    "dev:all": "concurrently -k -n \"mysql-api,vite-app\" -c \"blue,green\" \"tsx server/index.ts\" \"vite\"",
-    "dev:client": "vite",
-    "server": "tsx server/index.ts",
-=======
     "dev": "concurrently -k -n \"mysql-api,vite-app\" -c \"blue,green\" \"tsx watch server/index.ts\" \"vite\"",
     "dev:all": "concurrently -k -n \"mysql-api,vite-app\" -c \"blue,green\" \"tsx watch server/index.ts\" \"vite\"",
     "dev:client": "vite",
     "server": "tsx watch server/index.ts",
->>>>>>> ae31682 (Feat: diagrama de classe e caso de uso, funcionalidade de vendas)
     "build": "tsc -b && vite build",
     "lint": "oxlint",
     "preview": "vite preview"

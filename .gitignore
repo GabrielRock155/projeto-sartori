@@ -22,9 +22,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
-<<<<<<< HEAD
-=======
 *.zip
 *.db
 server/*.db
->>>>>>> ae31682 (Feat: diagrama de classe e caso de uso, funcionalidade de vendas)

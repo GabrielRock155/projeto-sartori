@@ -62,8 +62,6 @@ INSERT INTO `suits` (`id`, `code`, `name`, `category`, `fabric`, `color`, `color
 ALTER TABLE `suits`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `code` (`code`);
-<<<<<<< HEAD
-=======
 
 -- --------------------------------------------------------
 
@@ -86,7 +84,6 @@ CREATE TABLE IF NOT EXISTS `sales` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
->>>>>>> ae31682 (Feat: diagrama de classe e caso de uso, funcionalidade de vendas)
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

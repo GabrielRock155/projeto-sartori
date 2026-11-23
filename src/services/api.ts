@@ -53,8 +53,6 @@ export async function deleteSuit(id: string): Promise<boolean> {
     return false;
   }
 }
-<<<<<<< HEAD
-=======
 
 export async function sellSuit(
   id: string,
@@ -83,4 +81,3 @@ export async function sellSuit(
     return { ok: false, error: 'Não foi possível conectar ao servidor backend.' };
   }
 }
->>>>>>> ae31682 (Feat: diagrama de classe e caso de uso, funcionalidade de vendas)

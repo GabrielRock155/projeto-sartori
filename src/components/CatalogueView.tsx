@@ -7,12 +7,8 @@ import {
   PackageOpen,
   Plus,
   Pencil,
-<<<<<<< HEAD
-  Trash2
-=======
   Trash2,
   BadgeDollarSign
->>>>>>> ae31682 (Feat: diagrama de classe e caso de uso, funcionalidade de vendas)
 } from 'lucide-react';
 
 interface CatalogueViewProps {
@@ -20,18 +16,12 @@ interface CatalogueViewProps {
   onSelectSuit: (suit: Suit) => void;
   onEditSuit?: (suit: Suit) => void;
   onDeleteSuit?: (suit: Suit) => void;
-<<<<<<< HEAD
-=======
   onSellSuit?: (suit: Suit) => void;
->>>>>>> ae31682 (Feat: diagrama de classe e caso de uso, funcionalidade de vendas)
   onOpenNewSuit: () => void;
   canEdit?: boolean;
   canDelete?: boolean;
   canInsert?: boolean;
-<<<<<<< HEAD
-=======
   canSell?: boolean;
->>>>>>> ae31682 (Feat: diagrama de classe e caso de uso, funcionalidade de vendas)
 }
 
 export const CatalogueView: React.FC<CatalogueViewProps> = ({
@@ -39,18 +29,12 @@ export const CatalogueView: React.FC<CatalogueViewProps> = ({
   onSelectSuit,
   onEditSuit,
   onDeleteSuit,
-<<<<<<< HEAD
-=======
   onSellSuit,
->>>>>>> ae31682 (Feat: diagrama de classe e caso de uso, funcionalidade de vendas)
   onOpenNewSuit,
   canEdit = true,
   canDelete = true,
   canInsert = true,
-<<<<<<< HEAD
-=======
   canSell = true,
->>>>>>> ae31682 (Feat: diagrama de classe e caso de uso, funcionalidade de vendas)
 }) => {
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [search, setSearch] = useState('');
@@ -208,8 +192,6 @@ export const CatalogueView: React.FC<CatalogueViewProps> = ({
                     </div>
 
                     <div className="flex items-center gap-1.5">
-<<<<<<< HEAD
-=======
                       {/* Sell Button (4ª Funcionalidade) */}
                       {onSellSuit && (
                         canSell && suit.stock > 0 ? (
@@ -242,7 +224,6 @@ export const CatalogueView: React.FC<CatalogueViewProps> = ({
                         )
                       )}
 
->>>>>>> ae31682 (Feat: diagrama de classe e caso de uso, funcionalidade de vendas)
                       {/* Edit Button */}
                       {onEditSuit && (
                         canEdit ? (
