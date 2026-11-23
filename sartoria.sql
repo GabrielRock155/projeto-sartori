@@ -62,6 +62,31 @@ INSERT INTO `suits` (`id`, `code`, `name`, `category`, `fabric`, `color`, `color
 ALTER TABLE `suits`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `code` (`code`);
+<<<<<<< HEAD
+=======
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `sales` (4ª Funcionalidade: Histórico de Vendas)
+--
+
+CREATE TABLE IF NOT EXISTS `sales` (
+  `id` varchar(64) NOT NULL,
+  `suitId` varchar(64) NOT NULL,
+  `suitCode` varchar(64) NOT NULL,
+  `suitName` varchar(255) NOT NULL,
+  `customerName` varchar(255) NOT NULL DEFAULT 'Cliente Balcão',
+  `paymentMethod` varchar(100) NOT NULL DEFAULT 'PIX',
+  `quantity` int(11) NOT NULL DEFAULT 1,
+  `unitPrice` decimal(10,2) NOT NULL DEFAULT 0.00,
+  `totalPrice` decimal(10,2) NOT NULL DEFAULT 0.00,
+  `profit` decimal(10,2) NOT NULL DEFAULT 0.00,
+  `soldAt` timestamp NOT NULL DEFAULT current_timestamp(),
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+>>>>>>> ae31682 (Feat: diagrama de classe e caso de uso, funcionalidade de vendas)
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

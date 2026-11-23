@@ -53,3 +53,34 @@ export async function deleteSuit(id: string): Promise<boolean> {
     return false;
   }
 }
+<<<<<<< HEAD
+=======
+
+export async function sellSuit(
+  id: string,
+  quantity: number,
+  customerName?: string,
+  paymentMethod?: string
+): Promise<{ ok: boolean; error?: string }> {
+  try {
+    const res = await fetch(`${API_BASE}/suits/${id}/sell`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ quantity, customerName, paymentMethod }),
+    });
+    if (!res.ok) {
+      const text = await res.text();
+      try {
+        const json = JSON.parse(text);
+        return { ok: false, error: json.error || `Erro HTTP ${res.status}` };
+      } catch {
+        return { ok: false, error: `Servidor desatualizado (HTTP ${res.status}). Reinicie o terminal do npm run dev.` };
+      }
+    }
+    return { ok: true };
+  } catch (error) {
+    console.error('Erro ao registrar venda do terno:', error);
+    return { ok: false, error: 'Não foi possível conectar ao servidor backend.' };
+  }
+}
+>>>>>>> ae31682 (Feat: diagrama de classe e caso de uso, funcionalidade de vendas)

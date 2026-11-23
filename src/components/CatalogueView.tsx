@@ -7,7 +7,12 @@ import {
   PackageOpen,
   Plus,
   Pencil,
+<<<<<<< HEAD
   Trash2
+=======
+  Trash2,
+  BadgeDollarSign
+>>>>>>> ae31682 (Feat: diagrama de classe e caso de uso, funcionalidade de vendas)
 } from 'lucide-react';
 
 interface CatalogueViewProps {
@@ -15,10 +20,18 @@ interface CatalogueViewProps {
   onSelectSuit: (suit: Suit) => void;
   onEditSuit?: (suit: Suit) => void;
   onDeleteSuit?: (suit: Suit) => void;
+<<<<<<< HEAD
+=======
+  onSellSuit?: (suit: Suit) => void;
+>>>>>>> ae31682 (Feat: diagrama de classe e caso de uso, funcionalidade de vendas)
   onOpenNewSuit: () => void;
   canEdit?: boolean;
   canDelete?: boolean;
   canInsert?: boolean;
+<<<<<<< HEAD
+=======
+  canSell?: boolean;
+>>>>>>> ae31682 (Feat: diagrama de classe e caso de uso, funcionalidade de vendas)
 }
 
 export const CatalogueView: React.FC<CatalogueViewProps> = ({
@@ -26,10 +39,18 @@ export const CatalogueView: React.FC<CatalogueViewProps> = ({
   onSelectSuit,
   onEditSuit,
   onDeleteSuit,
+<<<<<<< HEAD
+=======
+  onSellSuit,
+>>>>>>> ae31682 (Feat: diagrama de classe e caso de uso, funcionalidade de vendas)
   onOpenNewSuit,
   canEdit = true,
   canDelete = true,
   canInsert = true,
+<<<<<<< HEAD
+=======
+  canSell = true,
+>>>>>>> ae31682 (Feat: diagrama de classe e caso de uso, funcionalidade de vendas)
 }) => {
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [search, setSearch] = useState('');
@@ -187,6 +208,41 @@ export const CatalogueView: React.FC<CatalogueViewProps> = ({
                     </div>
 
                     <div className="flex items-center gap-1.5">
+<<<<<<< HEAD
+=======
+                      {/* Sell Button (4ª Funcionalidade) */}
+                      {onSellSuit && (
+                        canSell && suit.stock > 0 ? (
+                          <button
+                            type="button"
+                            onClick={(e) => {
+                              e.preventDefault();
+                              e.stopPropagation();
+                              onSellSuit(suit);
+                            }}
+                            className="p-2 rounded-lg bg-emerald-50 hover:bg-emerald-100 text-emerald-700 font-medium transition-all cursor-pointer"
+                            title="Registrar venda deste terno"
+                          >
+                            <div className="bg-transparent p-0 pointer-events-none">
+                              <BadgeDollarSign className="w-3.5 h-3.5" />
+                            </div>
+                          </button>
+                        ) : (
+                          <button
+                            type="button"
+                            disabled
+                            onClick={(e) => e.stopPropagation()}
+                            className="p-2 rounded-lg bg-slate-100 text-slate-300 font-medium cursor-not-allowed opacity-50"
+                            title={!canSell ? 'Venda inativada pelo administrador' : 'Terno sem estoque disponível'}
+                          >
+                            <div className="bg-transparent p-0 pointer-events-none">
+                              <BadgeDollarSign className="w-3.5 h-3.5" />
+                            </div>
+                          </button>
+                        )
+                      )}
+
+>>>>>>> ae31682 (Feat: diagrama de classe e caso de uso, funcionalidade de vendas)
                       {/* Edit Button */}
                       {onEditSuit && (
                         canEdit ? (

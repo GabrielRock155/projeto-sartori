@@ -30,4 +30,8 @@ export interface UserPermissions {
   canInsert: boolean;
   canEdit: boolean;
   canDelete: boolean;
+<<<<<<< HEAD
+=======
+  canSell: boolean;
+>>>>>>> ae31682 (Feat: diagrama de classe e caso de uso, funcionalidade de vendas)
 }

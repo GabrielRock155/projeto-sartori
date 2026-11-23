@@ -143,6 +143,103 @@ app.delete('/api/suits/:id', async (req, res) => {
   }
 });
 
+<<<<<<< HEAD
+=======
+// POST register sale (4ª Funcionalidade: Registrar Venda e Baixa de Estoque)
+app.post('/api/suits/:id/sell', async (req, res) => {
+  try {
+    const { id } = req.params;
+    const quantity = Math.max(1, Number(req.body.quantity) || 1);
+    const customerName = (req.body.customerName || '').trim() || 'Cliente Balcão';
+    const paymentMethod = req.body.paymentMethod || 'PIX';
+
+    const [rows] = await pool.query(
+      'SELECT code, name, price, costPrice, stock, minStock, soldCount FROM suits WHERE id = ?',
+      [id]
+    );
+    const list = rows as Array<{
+      code: string;
+      name: string;
+      price: number;
+      costPrice: number;
+      stock: number;
+      minStock: number;
+      soldCount: number;
+    }>;
+
+    if (!list || list.length === 0) {
+      return res.status(404).json({ error: 'Terno não encontrado no banco de dados.' });
+    }
+
+    const currentSuit = list[0];
+    if (currentSuit.stock < quantity) {
+      return res.status(400).json({ error: 'Estoque insuficiente para realizar esta venda.' });
+    }
+
+    const newStock = currentSuit.stock - quantity;
+    const newSoldCount = (currentSuit.soldCount || 0) + quantity;
+    const newStatus =
+      newStock === 0
+        ? 'esgotado'
+        : newStock <= currentSuit.minStock
+          ? 'baixo_estoque'
+          : 'disponivel';
+
+    const unitPrice = Number(currentSuit.price) || 0;
+    const unitCost = Number(currentSuit.costPrice) || 0;
+    const totalPrice = unitPrice * quantity;
+    const profit = (unitPrice - unitCost) * quantity;
+    const saleId = `sale-${Date.now()}`;
+
+    // 1. Atualiza o estoque, soldCount e status na tabela suits
+    await pool.query(
+      'UPDATE suits SET stock = ?, soldCount = ?, status = ? WHERE id = ?',
+      [newStock, newSoldCount, newStatus, id]
+    );
+
+    // 2. Grava o registro da venda na tabela sales do MySQL
+    await pool.query(
+      `INSERT INTO sales (id, suitId, suitCode, suitName, customerName, paymentMethod, quantity, unitPrice, totalPrice, profit)
+       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+      [
+        saleId,
+        id,
+        currentSuit.code,
+        currentSuit.name,
+        customerName,
+        paymentMethod,
+        quantity,
+        unitPrice,
+        totalPrice,
+        profit,
+      ]
+    );
+
+    res.json({
+      success: true,
+      saleId,
+      stock: newStock,
+      soldCount: newSoldCount,
+      status: newStatus,
+    });
+  } catch (error) {
+    console.error('Erro ao registrar venda no MySQL:', error);
+    res.status(500).json({ error: (error as Error).message });
+  }
+});
+
+// GET sales history
+app.get('/api/sales', async (_req, res) => {
+  try {
+    const [rows] = await pool.query('SELECT * FROM sales ORDER BY soldAt DESC');
+    res.json(rows);
+  } catch (error) {
+    console.error('Erro ao buscar histórico de vendas do MySQL:', error);
+    res.status(500).json({ error: (error as Error).message });
+  }
+});
+
+>>>>>>> ae31682 (Feat: diagrama de classe e caso de uso, funcionalidade de vendas)
 // Serve static frontend files in production
 if (fs.existsSync(distPath)) {
   app.use(express.static(distPath));

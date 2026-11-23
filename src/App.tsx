@@ -15,6 +15,10 @@ import { HomeGalleryView } from './components/HomeGalleryView';
 import { CatalogueView } from './components/CatalogueView';
 import { NewSuitModal } from './components/NewSuitModal';
 import { EditSuitModal } from './components/EditSuitModal';
+<<<<<<< HEAD
+=======
+import { SellSuitModal } from './components/SellSuitModal';
+>>>>>>> ae31682 (Feat: diagrama de classe e caso de uso, funcionalidade de vendas)
 import { SuitDetailsModal } from './components/SuitDetailsModal';
 import { PermissionsModal } from './components/PermissionsModal';
 import { ConfirmModal } from './components/ConfirmModal';
@@ -27,21 +31,43 @@ export function App() {
   const [isSuitModalOpen, setIsSuitModalOpen] = useState(false);
   const [selectedSuit, setSelectedSuit] = useState<Suit | null>(null);
   const [editingSuit, setEditingSuit] = useState<Suit | null>(null);
+<<<<<<< HEAD
+=======
+  const [sellingSuit, setSellingSuit] = useState<Suit | null>(null);
+>>>>>>> ae31682 (Feat: diagrama de classe e caso de uso, funcionalidade de vendas)
   const [isPermissionsModalOpen, setIsPermissionsModalOpen] = useState(false);
   const [deletingSuit, setDeletingSuit] = useState<Suit | null>(null);
   const [isDeleting, setIsDeleting] = useState(false);
 
+<<<<<<< HEAD
   // User Permissions state (Inserir, Editar, Excluir)
+=======
+  // User Permissions state (Inserir, Editar, Excluir, Vender)
+>>>>>>> ae31682 (Feat: diagrama de classe e caso de uso, funcionalidade de vendas)
   const [permissions, setPermissions] = useState<UserPermissions>(() => {
     const saved = localStorage.getItem('sartoria_permissions');
     if (saved) {
       try {
+<<<<<<< HEAD
         return JSON.parse(saved);
+=======
+        const parsed = JSON.parse(saved);
+        return {
+          canInsert: parsed.canInsert ?? true,
+          canEdit: parsed.canEdit ?? true,
+          canDelete: parsed.canDelete ?? true,
+          canSell: parsed.canSell ?? true,
+        };
+>>>>>>> ae31682 (Feat: diagrama de classe e caso de uso, funcionalidade de vendas)
       } catch {
         // Fallback to default
       }
     }
+<<<<<<< HEAD
     return { canInsert: true, canEdit: true, canDelete: true };
+=======
+    return { canInsert: true, canEdit: true, canDelete: true, canSell: true };
+>>>>>>> ae31682 (Feat: diagrama de classe e caso de uso, funcionalidade de vendas)
   });
 
   const handleSavePermissions = (newPermissions: UserPermissions) => {
@@ -164,6 +190,16 @@ export function App() {
                 setEditingSuit(suit);
               }}
               onDeleteSuit={handleDeleteSuit}
+<<<<<<< HEAD
+=======
+              onSellSuit={(suit) => {
+                if (!permissions.canSell) {
+                  showToast('error', 'Função bloqueada', 'O registro de vendas foi inativado pelo administrador.');
+                  return;
+                }
+                setSellingSuit(suit);
+              }}
+>>>>>>> ae31682 (Feat: diagrama de classe e caso de uso, funcionalidade de vendas)
               onOpenNewSuit={() => {
                 if (!permissions.canInsert) {
                   showToast('error', 'Função bloqueada', 'O cadastro de ternos foi inativado pelo administrador.');
@@ -174,6 +210,10 @@ export function App() {
               canEdit={permissions.canEdit}
               canDelete={permissions.canDelete}
               canInsert={permissions.canInsert}
+<<<<<<< HEAD
+=======
+              canSell={permissions.canSell}
+>>>>>>> ae31682 (Feat: diagrama de classe e caso de uso, funcionalidade de vendas)
             />
           )}
         </main>
@@ -202,6 +242,21 @@ export function App() {
         onToast={showToast}
       />
 
+<<<<<<< HEAD
+=======
+      {/* 4ª Funcionalidade: Registrar Venda e Baixa de Estoque */}
+      <SellSuitModal
+        suit={sellingSuit}
+        isOpen={!!sellingSuit}
+        onClose={() => setSellingSuit(null)}
+        onSuccess={() => {
+          loadData();
+          setSellingSuit(null);
+        }}
+        onToast={showToast}
+      />
+
+>>>>>>> ae31682 (Feat: diagrama de classe e caso de uso, funcionalidade de vendas)
       {/* Ficha Técnica / Detalhes */}
       <SuitDetailsModal
         suit={selectedSuit}
@@ -213,9 +268,23 @@ export function App() {
           }
           setEditingSuit(suit);
         }}
+<<<<<<< HEAD
         onDeleteSuit={handleDeleteSuit}
         canEdit={permissions.canEdit}
         canDelete={permissions.canDelete}
+=======
+        onSellSuit={(suit) => {
+          if (!permissions.canSell) {
+            showToast('error', 'Função bloqueada', 'O registro de vendas foi inativado pelo administrador.');
+            return;
+          }
+          setSellingSuit(suit);
+        }}
+        onDeleteSuit={handleDeleteSuit}
+        canEdit={permissions.canEdit}
+        canDelete={permissions.canDelete}
+        canSell={permissions.canSell}
+>>>>>>> ae31682 (Feat: diagrama de classe e caso de uso, funcionalidade de vendas)
       />
 
       {/* Modal de Controle de Funções (Inserir, Editar, Excluir) */}

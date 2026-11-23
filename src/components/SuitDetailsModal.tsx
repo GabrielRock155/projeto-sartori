@@ -5,7 +5,12 @@ import {
   X, 
   ShoppingBag,
   Pencil,
+<<<<<<< HEAD
   Trash2
+=======
+  Trash2,
+  BadgeDollarSign
+>>>>>>> ae31682 (Feat: diagrama de classe e caso de uso, funcionalidade de vendas)
 } from 'lucide-react';
 
 interface SuitDetailsModalProps {
@@ -13,8 +18,15 @@ interface SuitDetailsModalProps {
   onClose: () => void;
   onEditSuit?: (suit: Suit) => void;
   onDeleteSuit?: (suit: Suit) => void;
+<<<<<<< HEAD
   canEdit?: boolean;
   canDelete?: boolean;
+=======
+  onSellSuit?: (suit: Suit) => void;
+  canEdit?: boolean;
+  canDelete?: boolean;
+  canSell?: boolean;
+>>>>>>> ae31682 (Feat: diagrama de classe e caso de uso, funcionalidade de vendas)
 }
 
 export const SuitDetailsModal: React.FC<SuitDetailsModalProps> = ({
@@ -22,8 +34,15 @@ export const SuitDetailsModal: React.FC<SuitDetailsModalProps> = ({
   onClose,
   onEditSuit,
   onDeleteSuit,
+<<<<<<< HEAD
   canEdit = true,
   canDelete = true,
+=======
+  onSellSuit,
+  canEdit = true,
+  canDelete = true,
+  canSell = true,
+>>>>>>> ae31682 (Feat: diagrama de classe e caso de uso, funcionalidade de vendas)
 }) => {
   if (!suit) return null;
 
@@ -95,6 +114,13 @@ export const SuitDetailsModal: React.FC<SuitDetailsModalProps> = ({
                 <span className="font-semibold text-slate-900">{suit.stock} unidades</span>
               </div>
               <div className="flex justify-between">
+<<<<<<< HEAD
+=======
+                <span className="text-slate-500">Total Vendido:</span>
+                <span className="font-semibold text-emerald-700 font-mono">{suit.soldCount || 0} un</span>
+              </div>
+              <div className="flex justify-between">
+>>>>>>> ae31682 (Feat: diagrama de classe e caso de uso, funcionalidade de vendas)
                 <span className="text-slate-500">Status:</span>
                 <span className={`font-semibold capitalize ${suit.status === 'baixo_estoque' ? 'text-rose-600' : 'text-emerald-700'}`}>
                   {suit.status.replace('_', ' ')}
@@ -126,6 +152,40 @@ export const SuitDetailsModal: React.FC<SuitDetailsModalProps> = ({
         {/* Footer */}
         <div className="p-4 border-t border-slate-100 flex items-center justify-between">
           <div className="flex items-center gap-2">
+<<<<<<< HEAD
+=======
+            {/* Sell Button (4ª Funcionalidade) */}
+            {onSellSuit && (
+              canSell && suit.stock > 0 ? (
+                <button
+                  type="button"
+                  onClick={() => {
+                    onClose();
+                    onSellSuit(suit);
+                  }}
+                  className="px-3.5 py-1.5 rounded-lg bg-emerald-700 hover:bg-emerald-800 text-white font-semibold text-xs transition-colors flex items-center gap-1.5 cursor-pointer"
+                >
+                  <div className="bg-transparent p-0">
+                    <BadgeDollarSign className="w-3.5 h-3.5 text-white" />
+                  </div>
+                  <span>Registrar Venda</span>
+                </button>
+              ) : (
+                <button
+                  type="button"
+                  disabled
+                  className="px-3.5 py-1.5 rounded-lg border border-slate-200 bg-slate-50 text-slate-400 font-semibold text-xs flex items-center gap-1.5 cursor-not-allowed opacity-60"
+                  title={!canSell ? 'Venda inativada pelo administrador' : 'Estoque esgotado'}
+                >
+                  <div className="bg-transparent p-0">
+                    <BadgeDollarSign className="w-3.5 h-3.5 text-slate-400" />
+                  </div>
+                  <span>{!canSell ? 'Venda Inativa' : 'Esgotado'}</span>
+                </button>
+              )
+            )}
+
+>>>>>>> ae31682 (Feat: diagrama de classe e caso de uso, funcionalidade de vendas)
             {/* Edit Button */}
             {onEditSuit && (
               canEdit ? (

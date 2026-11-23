@@ -54,6 +54,26 @@ export async function initDatabase() {
       ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
     `);
 
+<<<<<<< HEAD
+=======
+    // 3. Ensure table sales exists in sartoria (4ª Funcionalidade: Histórico de Vendas)
+    await pool.query(`
+      CREATE TABLE IF NOT EXISTS sales (
+        id VARCHAR(64) PRIMARY KEY,
+        suitId VARCHAR(64) NOT NULL,
+        suitCode VARCHAR(64) NOT NULL,
+        suitName VARCHAR(255) NOT NULL,
+        customerName VARCHAR(255) NOT NULL DEFAULT 'Cliente Balcão',
+        paymentMethod VARCHAR(100) NOT NULL DEFAULT 'PIX',
+        quantity INT NOT NULL DEFAULT 1,
+        unitPrice DECIMAL(10, 2) NOT NULL DEFAULT 0,
+        totalPrice DECIMAL(10, 2) NOT NULL DEFAULT 0,
+        profit DECIMAL(10, 2) NOT NULL DEFAULT 0,
+        soldAt TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+      ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+    `);
+
+>>>>>>> ae31682 (Feat: diagrama de classe e caso de uso, funcionalidade de vendas)
     console.log(`[MySQL] Conexão com o banco '${DB_NAME}' no XAMPP estabelecida com sucesso!`);
   } catch (error) {
     console.error('[MySQL Error] Falha ao inicializar o banco de dados MySQL:', error);
